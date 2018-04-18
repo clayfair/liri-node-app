@@ -8,7 +8,7 @@ var request = require('request');
 var fs = require("fs");
 
 // var spotify = new Spotify(keys.spotify);
-// var client = new Twitter(keys.twitter);
+var client = new Twitter(keys.twitter);
 
 
 var command = process.argv[2];
@@ -18,22 +18,32 @@ var command = process.argv[2];
 //still working on getting Twitter API working...
 
 function readTweets() {
-    // if (command === "my-tweets") {
-    //     //read 20 tweets of mine
-    //     console.log("hello");
-    // }
+    if (command === "my-tweets") {
+
+        var params = { screen_name: 'klayanthony1' };
+        client.get('statuses/user_timeline', params, function (error, tweets, response) {
+            if (!error) {
+                console.log(tweets);
+            }
+        });
+
+    }
 }
-// readTweets();
+
+readTweets();
 
 
 //--------------------------------------- 2. GET SPOTIFY INFO --------------------------------------------
 //still working on getting Spotify API working...
 
 function getSongInfo() {
+
     // if (command === "spotify-this-song") {
 
     // }
 }
+
+//getSongInfo();
 
 
 //---------------------------------------3. GET MOVIE INFO -----------------------------------------------
