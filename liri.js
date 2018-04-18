@@ -14,21 +14,29 @@ var fs = require("fs");
 var command = process.argv[2];
 var nameHere = process.argv[3];
 
-// function readTweets() {
-//     if (command === "my-tweets") {
-//         //read 20 tweets of mine
-//         console.log("hello");
-//     }
-// }
 
+//1. still working on getting Twitter API working...
+
+function readTweets() {
+    // if (command === "my-tweets") {
+    //     //read 20 tweets of mine
+    //     console.log("hello");
+    // }
+}
 // readTweets();
 
 
-// function getSongInfo() {
-//     if(command === "spotify-this-song") {
+//2. still working on getting Spotify API working...
 
-//     }
-// }
+function getSongInfo() {
+    // if (command === "spotify-this-song") {
+
+    // }
+}
+
+
+//3. last thing I need for movie info to work is getting process.argv[2] to spit out a movie in this format --> remember+the+titans
+//thinking I can use a .split().join() type of method 
 
 function getMovieInfo() {
     // var movie = encodeURI(process.argv[2]);
@@ -43,8 +51,8 @@ function getMovieInfo() {
                 // (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it).
                 //console.log("The movie's rating is: " + JSON.parse(body).imdbRating);
                 // console.log("The movie's title is: " + JSON.parse(body).imdbRating);
-            
-                
+
+
                 console.log("Title: " + data.Title);
                 console.log("Year: " + data.Year);
                 console.log("Starring: " + data.Actors);
@@ -63,3 +71,4 @@ function getMovieInfo() {
 }
 
 getMovieInfo();
+
