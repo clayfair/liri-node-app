@@ -3,11 +3,11 @@ require("dotenv").config();
 
 var keys = require("./keys.js");
 var Twitter = require('twitter');
-// var Spotify = require("")
+var Spotify = require('node-spotify-api');
 var request = require('request');
 var fs = require("fs");
 
-// var spotify = new Spotify(keys.spotify);
+var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
 
 
@@ -23,7 +23,7 @@ function readTweets() {
             if (error) {
                 console.log(error);
             } else {
-                for(var i = 0; i < tweets.length; i++) { 
+                for (var i = 0; i < tweets.length; i++) {
                     console.log("Tweet: " + tweets[i].text);
                     console.log("Date: " + tweets[i].created_at.substring(0, 19));
                     // console.log("Date: " + date.substring());
@@ -41,12 +41,18 @@ readTweets();
 
 function getSongInfo() {
 
-    // if (command === "spotify-this-song") {
-
-    // }
+    if (command === "spotify-this-song") {
+        spotify.search({ type: 'track', query: 'All the Small Things' }, function (err, data) {
+            if (err) {
+                return console.log('Error occurred: ' + err);
+            } else {
+                console.log(data);
+            }
+        });
+    }
 }
 
-//getSongInfo();
+getSongInfo();
 
 
 //---------------------------------------3. GET MOVIE INFO -----------------------------------------------
