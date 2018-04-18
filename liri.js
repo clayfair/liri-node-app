@@ -15,8 +15,6 @@ var command = process.argv[2];
 
 
 //--------------------------------------- 1. GET TWEETS ------------------------------------------------
-//still working on getting Twitter API working...
-
 function readTweets() {
     if (command === "my-tweets") {
 
@@ -25,14 +23,13 @@ function readTweets() {
             if (error) {
                 console.log(error);
             } else {
-                console.log(tweets);
-                for(var i = 0; i < tweets.length; i++) {
-                    var date = tweets[i].created_at; 
+                for(var i = 0; i < tweets.length; i++) { 
                     console.log("Tweet: " + tweets[i].text);
+                    console.log("Date: " + tweets[i].created_at.substring(0, 19));
+                    // console.log("Date: " + date.substring());
                 }
             }
         });
-
     }
 }
 
