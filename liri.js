@@ -22,8 +22,14 @@ function readTweets() {
 
         var params = { screen_name: 'klayanthony1' };
         client.get('statuses/user_timeline', params, function (error, tweets, response) {
-            if (!error) {
+            if (error) {
+                console.log(error);
+            } else {
                 console.log(tweets);
+                for(var i = 0; i < tweets.length; i++) {
+                    var date = tweets[i].created_at; 
+                    console.log("Tweet: " + tweets[i].text);
+                }
             }
         });
 
@@ -69,8 +75,6 @@ function getMovieInfo() {
             }
         });
 
-    } else {
-        console.log("invalid command");
     }
 }
 
