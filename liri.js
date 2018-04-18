@@ -37,16 +37,33 @@ readTweets();
 
 
 //--------------------------------------- 2. GET SPOTIFY INFO --------------------------------------------
-//still working on getting Spotify API working...
+//LAST TASK: how do I get this string into a query ...
 
 function getSongInfo() {
 
     if (command === "spotify-this-song") {
-        spotify.search({ type: 'track', query: 'All the Small Things' }, function (err, data) {
+        var myQuery = process.argv.slice(3);
+
+        spotify.search({ type: 'track', query: myQuery }, function (err, data) {
             if (err) {
                 return console.log('Error occurred: ' + err);
             } else {
-                console.log(data);
+                //name of the track
+                var trackName = data.tracks.items[0].name;
+                console.log("Track: " + trackName);
+                
+                //name of the artist
+                var artist = data.tracks.items[0].artists[0].name;
+                console.log("Artist: " + artist);
+
+                //name of the album 
+                var album = data.tracks.items[0].album.name;
+                console.log("Album: " + album);
+                
+                //preview link
+                var link = data.tracks.items[0].uri;
+                console.log("Preview link: " + link);
+            
             }
         });
     }
